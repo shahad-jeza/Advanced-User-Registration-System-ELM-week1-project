@@ -2,6 +2,14 @@
 
 A responsive, interactive company registration form with real-time validation, API integration, and modern UI/UX features.
 
+## Demo 🚀
+
+A live demo of the project is available at the following link:
+
+[Live Demo](https://scintillating-sfogliatella-cac8ff.netlify.app)
+
+This demo showcases the **Advanced User Registration System** with all its features, including form validation, API integration, and modern UI/UX. You can interact with the form, validate inputs, and see the results in real time.
+
 ## Features
 
 - **Real-time Form Validation**: Input validation for all fields, password strength checker, custom error messages.

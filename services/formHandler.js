@@ -5,8 +5,15 @@ export class FormHandler {
         this.form = form;
     }
 
+        // Function to simulate delay
+        delay(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
     async populateForm() {
         try {
+            // Simulate a 2-second delay before proceeding to see the loader 
+            await this.delay(3000);
             const company = await fetchCompanyDetails();
 
             // Populate company details

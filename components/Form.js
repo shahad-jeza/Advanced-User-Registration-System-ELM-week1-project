@@ -3,10 +3,11 @@ import { FormHandler } from "../services/formHandler.js";
 
 export class CompanyForm {
     constructor() {
+        // Create objects in the constructor
         this.form = document.createElement("form");
         this.formHandler = new FormHandler(this.form);
         
-        // Keep your existing form HTML structure
+        // Set up form structure with input fields
         this.form.innerHTML = `
         <div class="form-overlay"><div class="loader"></div></div>
         <h2 class="form-title">Company Registration</h2>
@@ -95,68 +96,72 @@ export class CompanyForm {
         `;
 
 
-                // Add loading state handling
-                this.showLoading = () => {
-                  this.form.classList.add('loading');
-              };
-      
-              this.hideLoading = () => {
-                  this.form.classList.remove('loading');
-              };
-              
-        this.form.addEventListener("submit", this.handleSubmit.bind(this));
-        this.initializeForm();
+       // Loading state functions (to show/hide a loading indicator)
+       this.showLoading = () => {
+        this.form.classList.add('loading');
+    };
+
+    this.hideLoading = () => {
+        this.form.classList.remove('loading');
+    };
+
+    // Attach event listener for form submission
+    this.form.addEventListener("submit", this.handleSubmit.bind(this));
+
+    // Initialize form with any existing data (if applicable)
+    this.initializeForm();
+}
+
+async initializeForm() {
+    try {
+        this.showLoading();
+        await this.formHandler.populateForm(); // Pre-fill form data if needed
+    } catch (error) {
+        console.error("Error initializing form:", error);
+    } finally {
+        this.hideLoading();
     }
+}
 
-    async initializeForm() {
-      try {
-          this.showLoading();
-          await this.formHandler.populateForm();
-      } catch (error) {
-          console.error("Error initializing form:", error);
-      } finally {
-          this.hideLoading();
-      }
-  }
+handleSubmit(event) {
+    event.preventDefault(); // Prevent default form submission behavior
 
+    // Collect form data
+    const formData = {
+        companyName: document.getElementById("companyName").value.trim(),
+        crNumber: document.getElementById("crNumber").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        password: document.getElementById("password").value,
+        confirmPassword: document.getElementById("confirmPassword").value,
+        city: document.getElementById("city").value.trim(),
+        region: document.getElementById("region").value.trim(),
+        zipCode: document.getElementById("zipCode").value.trim(),
+        businessType: document.getElementById("businessType").value,
+        termsAccepted: document.getElementById("terms").checked
+    };
 
-    handleSubmit(event) {
-        event.preventDefault();
-        
-        const formData = {
-            companyName: document.getElementById("companyName").value.trim(),
-            crNumber: document.getElementById("crNumber").value.trim(),
-            email: document.getElementById("email").value.trim(),
-            phone: document.getElementById("phone").value.trim(),
-            password: document.getElementById("password").value,
-            confirmPassword: document.getElementById("confirmPassword").value,
-            city: document.getElementById("city").value.trim(),
-            region: document.getElementById("region").value.trim(),
-            zipCode: document.getElementById("zipCode").value.trim(),
-            businessType: document.getElementById("businessType").value,
-            termsAccepted: document.getElementById("terms").checked
-        };
+    // Clear previous error messages
+    document.querySelectorAll(".text-danger").forEach(el => el.textContent = "");
 
-        // Clear previous errors
-        document.querySelectorAll(".text-danger").forEach(el => el.textContent = "");
+    // Validate form inputs
+    const errors = validateForm(formData);
 
-        // Validate form
-        const errors = validateForm(formData);
+    // Display validation errors
+    Object.keys(errors).forEach(key => {
+        document.getElementById(`${key}Error`).textContent = errors[key];
+    });
 
-        // Display errors
-        Object.keys(errors).forEach(key => {
-            document.getElementById(`${key}Error`).textContent = errors[key];
-        });
-
-        // If no errors, proceed with form submission
-        if (Object.keys(errors).length === 0) {
-            alert("Registration successful! 🎉");
-            localStorage.setItem("companyData", JSON.stringify(formData));
-            this.form.reset();
-        }
+    // If no errors, proceed with form submission
+    if (Object.keys(errors).length === 0) {
+        alert("Registration successful! 🎉"); // Temporary success message
+        localStorage.setItem("companyData", JSON.stringify(formData)); // Save form data locally
+        this.form.reset(); // Reset form after submission
     }
+}
 
-    render(parent) {
-        parent.appendChild(this.form);
-    }
+render(parent) {
+    // Append the form to the specified parent element
+    parent.appendChild(this.form);
+}
 }

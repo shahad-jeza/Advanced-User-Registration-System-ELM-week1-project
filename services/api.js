@@ -1,6 +1,6 @@
 export async function fetchCompanyDetails() {
   try {
-      const response = await fetch('https://fakerapi.it/api/v1/companies?_quantity=1');
+      const response = await fetch('https://fakerapi.it/api/v1/companies?_quantity=1'); // fake api with company data
       if (!response.ok) throw new Error('Failed to fetch company details.');
       
       const data = await response.json();
@@ -8,7 +8,7 @@ export async function fetchCompanyDetails() {
 
       return {
           name: company.name,
-          vat: `${Math.floor(Math.random() * 1000000)}`,
+          vat: `${Math.floor(Math.random() * 1000000)}`, 
           email: company.email,
           phone: company.phone,
           website: company.website,
@@ -26,7 +26,7 @@ export async function fetchCompanyDetails() {
           }
       };
   } catch (error) {
-      console.error('API Error:', error);
+      console.error('API Error:', error); // handle errors 
       throw new Error('Error fetching company details.');
   }
 }

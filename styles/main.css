@@ -214,7 +214,7 @@ body {
     /* Custom Footer styles */
     .custom-footer {
       border-top: 1px solid lightgray; /* Light gray line */
-      background-color: transparent; /* No background color */
+      background-color: transparent; 
       color: var(--primary-color) ;
       width: 90%; /* Line width is 80% of the screen width */
       margin: 0 auto; /* Center the footer */
@@ -286,8 +286,8 @@ body {
     }
     
     .theme-toggle-track {
-      width: 72px;  /* Increased width */
-      height: 36px; /* Increased height */
+      width: 72px;  
+      height: 36px; 
       background-color: #e9ecef;
       border-radius: 18px;
       position: relative;
@@ -304,8 +304,8 @@ body {
     }
     
     .theme-toggle-icon {
-      width: 28px;  /* Increased icon size */
-      height: 28px; /* Increased icon size */
+      width: 28px;  
+      height: 28px; 
       border-radius: 50%;
       position: absolute;
       left: 4px;

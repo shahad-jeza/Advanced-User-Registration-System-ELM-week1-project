@@ -12,26 +12,26 @@ A responsive, interactive company registration form with real-time validation, A
 ## Project Structure
 
 project-root/
-├── assests
-│   └── images
-├── components
+├── assets/
+│   └── images/
+├── components/
 │   └── Form.js
 ├── index.html
 ├── main.js
-├── services
+├── services/
 │   ├── api.js
 │   └── formHandler.js
-├── styles
+├── styles/
 │   └── main.css
-└── utils
-    ├── darkMode.js
-    └── validation.js
-
+└── utils/
+├── darkMode.js
+└── validation.js
 
 ## Setup Instructions
 
 1. Clone the repository:
-git clone https://github.com/shahad-jeza/Advanced-User-Registration-System-ELM-week1-project.git
+   ```bash
+   git clone https://github.com/shahad-jeza/Advanced-User-Registration-System-ELM-week1-project.git
 
 2. Open `index.html` via a local server (needed for ES6 modules).
 
@@ -39,25 +39,6 @@ git clone https://github.com/shahad-jeza/Advanced-User-Registration-System-ELM-w
 
 - Bootstrap 5.3.0
 
-## Usage
-
-### Basic Form Implementation
-
-```javascript
-import { CompanyForm } from "./components/Form.js";
-
-const app = document.getElementById("app");
-const formComponent = new CompanyForm();
-formComponent.render(app);
-```
-
-Validation
-
-Validates fields like email, password strength, phone number format, and commercial registration number.
-
-API Integration
-
-Auto-populates form with company data from an external API, with error handling and loading spinner.
 
 
 Contributing

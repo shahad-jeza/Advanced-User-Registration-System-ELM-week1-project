@@ -1,27 +1,28 @@
 export async function fetchCompanyDetails() {
   try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/users/1');
+      const response = await fetch('https://fakerapi.it/api/v1/companies?_quantity=1');
       if (!response.ok) throw new Error('Failed to fetch company details.');
       
-      const userData = await response.json();
-      
+      const data = await response.json();
+      const company = data.data[0]; // Get the first company from the response
+
       return {
-          name: userData.company.name,
-          vat: `CR${Math.floor(Math.random() * 1000000)}`,
-          email: userData.email,
-          phone: userData.phone,
-          website: userData.website,
+          name: company.name,
+          vat: `${Math.floor(Math.random() * 1000000)}`,
+          email: company.email,
+          phone: company.phone,
+          website: company.website,
           addresses: [{
-              street: userData.address.street,
-              city: userData.address.city,
-              zipcode: userData.address.zipcode,
-              country: userData.address.city
+              street: company.country, // FakerAPI doesn't return street, so using country as placeholder
+              city: company.country,
+              zipcode: "42361",
+              country: company.country
           }],
           contact: {
-              firstname: userData.name.split(' ')[0],
-              lastname: userData.name.split(' ')[1] || '',
-              email: userData.email,
-              phone: userData.phone
+              firstname: company.contact.firstname,
+              lastname: company.contact.lastname,
+              email: company.contact.email,
+              phone: company.contact.phone
           }
       };
   } catch (error) {

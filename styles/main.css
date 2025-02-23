@@ -28,7 +28,6 @@ html[data-theme="dark"] {
 body {
   position: relative;
   min-height: 100vh; 
-  margin: 0;
   background-color: var(--bg-color) !important; 
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -47,20 +46,49 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+#main{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+/* Top-right image stays fixed in its place */
 .top-right-image {
   position: absolute;
-  top: 150;   /* Adjust as needed */
-  right: 390px; /* Adjust as needed */
-  width: 100px; /* Adjust size as needed */
-  z-index: 10;  /* Ensures the image is above other elements */
+  top: 14vh; /* Use viewport height to avoid extreme shifts */
+  right: 22vw; /* Viewport width for better scaling */
+  max-width: 20%;
+  height: auto;
+  z-index: 10;
+}
+
+/* Adjust for medium screens (Tablets, small laptops) */
+@media (max-width: 1024px) {
+  .top-right-image {
+    top: 6vh; /* Slightly lower */
+    right: 8vw;
+    max-width: 18%;
+  }
+}
+
+/* Adjust for small screens (Phones) */
+@media (max-width: 768px) {
+  .top-right-image {
+    top: 5vh;
+    right: 5vw;
+    max-width: 15%;
+  }
+}
+
+/* Adjust for extra small screens */
+@media (max-width: 480px) {
+  .top-right-image {
+    top: 3vh;
+    right: 3vw;
+    max-width: 12%;
+  }
 }
 
 
-/* Optional: Adjust the body and form content */
-.navbar {
-  position: relative;
-  z-index: 5; /* Ensure navbar stays under the image */
-}
 
 .form-title {
   color: var(--label-color);

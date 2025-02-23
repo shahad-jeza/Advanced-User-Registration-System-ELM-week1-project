@@ -10,7 +10,7 @@ A responsive, interactive company registration form with real-time validation, A
 - **Component-Based Architecture**: Modular code structure, separated concerns (validation, API handling, UI), reusable components.
 
 ## Project Structure
-
+```
 project-root/
 ├── assets/
 │   └── images/
@@ -26,7 +26,7 @@ project-root/
 └── utils/
 ├── darkMode.js
 └── validation.js
-
+```
 ## Setup Instructions
 
 1. Clone the repository:

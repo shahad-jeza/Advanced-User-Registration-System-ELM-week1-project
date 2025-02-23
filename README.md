@@ -12,25 +12,26 @@ A responsive, interactive company registration form with real-time validation, A
 ## Project Structure
 
 project-root/
+├── assests
+│   └── images
+├── components
+│   └── Form.js
 ├── index.html
 ├── main.js
-├── styles/
+├── services
+│   ├── api.js
+│   └── formHandler.js
+├── styles
 │   └── main.css
-├── js/
-│   ├── components/
-│   │   ├── Form.js
-│   │   └── UserList.js
-│   ├── services/
-│   │   ├── api.js
-│   │   └── formHandler.js
-│   └── utils/
-│       └── validation.js
+└── utils
+    ├── darkMode.js
+    └── validation.js
 
 
 ## Setup Instructions
 
 1. Clone the repository:
-git clone https://github.com/your-username/modern-company-registration-form.git
+git clone https://github.com/shahad-jeza/Advanced-User-Registration-System-ELM-week1-project.git
 
 2. Open `index.html` via a local server (needed for ES6 modules).
 

@@ -54,9 +54,9 @@ body {
 /* Top-right image stays fixed in its place */
 .top-right-image {
   position: absolute;
-  top: 14vh; /* Use viewport height to avoid extreme shifts */
-  right: 22vw; /* Viewport width for better scaling */
-  max-width: 20%;
+  top: 12vh; /* Use viewport height to avoid extreme shifts */
+  right: 18vw; /* Viewport width for better scaling */
+  max-width: 15%;
   height: auto;
   z-index: 10;
 }
@@ -64,8 +64,8 @@ body {
 /* Adjust for medium screens (Tablets, small laptops) */
 @media (max-width: 1024px) {
   .top-right-image {
-    top: 6vh; /* Slightly lower */
-    right: 8vw;
+    top: 8vh; /* Slightly lower */
+    right: 10vw;
     max-width: 18%;
   }
 }
